@@ -1,0 +1,184 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SyncWave Pro — DJ software that keeps your music on your Mac</title>
+<meta name="description" content="SyncWave Pro: library cleanup, next-track suggestions, set builder and a two-deck player with real beat sync and Auto DJ. Works offline. 14-day free trial.">
+<link rel="icon" href="icon.png">
+<style>
+/* ---- edit these three lines when the store is ready ---- */
+:root{--accent:#e8a33a;--bg:#14161a;--panel:#1c1f25;--line:#2b2f37;--text:#e9e6df;--mute:#9a9ca3}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif}
+a{color:var(--accent)}
+.wrap{max-width:1120px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:5;background:rgba(20,22,26,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:22px;height:58px}
+.logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.14em;text-decoration:none;color:var(--text)}
+.logo img{width:28px;height:28px;border-radius:7px}.logo b{color:var(--accent);letter-spacing:0;font-weight:600}
+nav{margin-left:auto;display:flex;gap:18px;font-size:14px}nav a{color:var(--mute);text-decoration:none}nav a:hover{color:var(--text)}
+.lang{border:1px solid var(--line);border-radius:6px;padding:2px 8px;cursor:pointer;background:none;color:var(--mute);font:inherit;font-size:13px}
+.btn{display:inline-block;padding:12px 22px;border-radius:8px;font-weight:600;text-decoration:none;border:1px solid var(--accent);cursor:pointer;font-size:15px}
+.btn.p{background:var(--accent);color:#1a1307}.btn.s{color:var(--accent);background:none}
+.hero{padding:72px 0 36px;text-align:center}
+.hero h1{font-size:clamp(32px,5vw,52px);line-height:1.12;margin:0 0 16px;letter-spacing:-.01em}
+.hero p{font-size:19px;color:var(--mute);max-width:720px;margin:0 auto 28px}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.small{font-size:13px;color:var(--mute);margin-top:12px}
+.shot{margin:44px auto 0;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.shot img{display:block;width:100%;height:auto}
+section{padding:64px 0;border-top:1px solid var(--line)}
+h2{font-size:30px;margin:0 0 8px}.lead{color:var(--mute);margin:0 0 32px;max-width:680px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:20px}
+.card h3{margin:0 0 6px;font-size:17px}.card p{margin:0;color:var(--mute);font-size:15px}
+.n{display:inline-block;width:24px;height:24px;border-radius:50%;border:1px solid var(--accent);color:var(--accent);text-align:center;font-size:13px;line-height:22px;margin-right:8px}
+.price{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px;max-width:760px}
+.price .card{padding:28px}.amt{font-size:42px;font-weight:700;margin:6px 0}.amt small{font-size:15px;color:var(--mute);font-weight:400}
+.price ul{padding-left:18px;color:var(--mute);margin:14px 0 22px}
+.dl{display:flex;gap:12px;flex-wrap:wrap;margin:6px 0 10px}
+ol.steps{padding-left:20px}ol.steps li{margin-bottom:8px}
+code{background:#0d0f12;border:1px solid var(--line);padding:2px 6px;border-radius:5px;font-size:13px}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 18px;margin-bottom:10px}
+summary{cursor:pointer;font-weight:600}details p{color:var(--mute);margin:10px 0 0}
+footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-size:13px}
+.legal{white-space:pre-wrap;color:var(--mute);font-size:14px}
+[data-tr]{display:none}html[lang=tr] [data-en]{display:none}html[lang=tr] [data-tr]{display:revert}
+@media(max-width:700px){nav a{display:none}}
+</style>
+</head>
+<body>
+<!--
+  STORE SETTINGS — replace before going live:
+  CHECKOUT  = your Lemon Squeezy checkout link (Products > Share)
+  PRICE     = the price shown on the page
+  DOWNLOADS = GitHub Release asset links (the .zip files are over 100 MB, so they
+              cannot sit in the Pages repo itself; attach them to a Release)
+-->
+<script>
+const CHECKOUT = "https://kuzutu.lemonsqueezy.com/checkout/buy/REPLACE-ME";
+const PRICE = "$19.99";
+const DL = {
+  arm: "https://github.com/kuzutu/syncwave-pro/releases/latest/download/SyncWave-Pro-2.3.0-mac-AppleSilicon.zip",
+  intel: "https://github.com/kuzutu/syncwave-pro/releases/latest/download/SyncWave-Pro-2.3.0-mac-Intel.zip"
+};
+</script>
+<header><div class="wrap">
+  <a class="logo" href="#"><img src="icon.png" alt="">SYNCWAVE <b>Pro</b></a>
+  <nav>
+    <a href="#features"><span data-en>Features</span><span data-tr>Özellikler</span></a>
+    <a href="#download"><span data-en>Download</span><span data-tr>İndir</span></a>
+    <a href="#buy"><span data-en>Buy</span><span data-tr>Satın al</span></a>
+    <a href="#faq"><span data-en>FAQ</span><span data-tr>SSS</span></a>
+  </nav>
+  <button class="lang" id="lang">TR</button>
+</div></header>
+
+<div class="hero"><div class="wrap">
+  <h1 data-en>Prepare, plan and play your sets.<br>Your music never leaves your Mac.</h1>
+  <h1 data-tr>Setlerini hazırla, planla ve çal.<br>Müziğin Mac'inden hiç çıkmaz.</h1>
+  <p data-en>SyncWave Pro reads your rekordbox or Mixed In Key library, cleans it up, tells you what fits next, builds two-hour sets — and plays them on two decks with beat sync that locks kick on kick.</p>
+  <p data-tr>SyncWave Pro rekordbox ya da Mixed In Key kütüphaneni okur, temizler, sıradaki uygun parçayı söyler, iki saatlik setler kurar — ve kick'i kick'e oturtan beat sync ile iki deck'te çalar.</p>
+  <div class="cta">
+    <a class="btn p" href="#download"><span data-en>Try free for 14 days</span><span data-tr>14 gün ücretsiz dene</span></a>
+    <a class="btn s" href="#buy"><span data-en>Buy a license</span><span data-tr>Lisans al</span></a>
+  </div>
+  <div class="small"><span data-en>macOS 12 or later · Apple Silicon & Intel · works offline</span><span data-tr>macOS 12 ve sonrası · Apple Silicon ve Intel · çevrimdışı çalışır</span></div>
+  <div class="shot"><img src="deck.jpg" alt="SyncWave Pro deck screen" width="1440" height="900"></div>
+</div></div>
+
+<section id="features"><div class="wrap">
+  <h2 data-en>Five stages, one app</h2><h2 data-tr>Beş aşama, tek uygulama</h2>
+  <p class="lead" data-en>Each stage builds on the one before it, from a messy collection to a mix that plays itself.</p>
+  <p class="lead" data-tr>Her aşama bir öncekinin üstüne kurulur: dağınık arşivden kendi kendine çalan mikse.</p>
+  <div class="grid">
+    <div class="card"><h3><span class="n">1</span><span data-en>Library</span><span data-tr>Kütüphane</span></h3><p data-en>Load a rekordbox XML, a Mixed In Key CSV or just a folder. Tempo, key, energy, beat grid and waveform for every track.</p><p data-tr>rekordbox XML, Mixed In Key CSV ya da sadece bir klasör. Her parça için tempo, ton, enerji, beat grid ve dalga formu.</p></div>
+    <div class="card"><h3><span class="n">2</span><span data-en>Cleanup</span><span data-tr>Temizlik</span></h3><p data-en>Finds duplicates, moved files and tracks that still need analysis — without ever touching your audio files.</p><p data-tr>Kopyaları, yeri değişmiş dosyaları ve analiz bekleyen parçaları bulur — ses dosyalarına asla dokunmaz.</p></div>
+    <div class="card"><h3><span class="n">3</span><span data-en>Next track</span><span data-tr>Sıradaki parça</span></h3><p data-en>Tell it what's playing; it ranks your library by key, tempo, energy and timbre, and measures the transition itself.</p><p data-tr>Çalanı söyle; kütüphaneni ton, tempo, enerji ve tını ile sıralar, geçişin kendisini ölçer.</p></div>
+    <div class="card"><h3><span class="n">4</span><span data-en>Set builder</span><span data-tr>Set kurucu</span></h3><p data-en>Lays out a two-hour set along one of 32 energy routes through your collection, then sends it to the decks.</p><p data-tr>Arşivinde 32 enerji rotasından biri boyunca iki saatlik bir set dizer ve deck'lere gönderir.</p></div>
+    <div class="card"><h3><span class="n">5</span><span data-en>Deck & Auto DJ</span><span data-tr>Deck ve Auto DJ</span></h3><p data-en>Two decks with real beat sync, hot cues, loops, EQ, filter and effects. Auto DJ mixes the list for you with EQ'd, phrase-aligned transitions.</p><p data-tr>Gerçek beat sync, hot cue, loop, EQ, filtre ve efektli iki deck. Auto DJ listeyi EQ'lu, frazına oturan geçişlerle senin için mikser.</p></div>
+    <div class="card"><h3><span class="n">+</span><span data-en>Your gear & your grids</span><span data-tr>Donanımın ve gridlerin</span></h3><p data-en>MIDI controller support. Fix a beat grid once — it follows the track to the decks and back to rekordbox.</p><p data-tr>MIDI kontrolcü desteği. Beat grid'i bir kez düzelt — parçayla deck'e ve rekordbox'a gider.</p></div>
+  </div>
+</div></section>
+
+<section id="download"><div class="wrap">
+  <h2 data-en>Download the free trial</h2><h2 data-tr>Ücretsiz denemeyi indir</h2>
+  <p class="lead" data-en>Every feature, 14 days, no account and no card. Buy a license any time to keep going.</p>
+  <p class="lead" data-tr>Tüm özellikler, 14 gün, hesap ve kart yok. Devam etmek için istediğin zaman lisans al.</p>
+  <div class="dl">
+    <a class="btn p" id="dlArm" href="#">Apple Silicon (M1–M4)</a>
+    <a class="btn s" id="dlIntel" href="#">Intel Mac</a>
+  </div>
+  <p class="small" data-en>Not sure? Apple menu → About This Mac shows "Chip: Apple M…" or "Processor: Intel".</p>
+  <p class="small" data-tr>Emin değil misin? Apple menüsü → Bu Mac Hakkında "Çip: Apple M…" ya da "İşlemci: Intel" gösterir.</p>
+  <h3 style="margin-top:34px" data-en>Install</h3><h3 style="margin-top:34px" data-tr>Kurulum</h3>
+  <ol class="steps" data-en>
+    <li>Unzip and drag <b>SyncWave Pro.app</b> into Applications.</li>
+    <li>Open it. If macOS says it can't verify the app: on macOS 15+ go to System Settings → Privacy &amp; Security and click <b>Open Anyway</b>; on macOS 12–14 right-click the app → <b>Open</b> → <b>Open</b>. Only needed once.</li>
+    <li>Choose <b>Try free for 14 days</b>, or paste your license key and click <b>Activate</b>.</li>
+  </ol>
+  <ol class="steps" data-tr>
+    <li>Zip'i aç ve <b>SyncWave Pro.app</b>'i Uygulamalar klasörüne sürükle.</li>
+    <li>Aç. macOS uygulamayı doğrulayamadığını söylerse: macOS 15+ için Sistem Ayarları → Gizlilik ve Güvenlik → <b>Yine de Aç</b>; macOS 12–14 için uygulamaya sağ tık → <b>Aç</b> → <b>Aç</b>. Yalnızca bir kez gerekir.</li>
+    <li><b>14 gün ücretsiz dene</b>'yi seç ya da lisans anahtarını yapıştırıp <b>Etkinleştir</b>'e bas.</li>
+  </ol>
+</div></section>
+
+<section id="buy"><div class="wrap">
+  <h2 data-en>Buy SyncWave Pro</h2><h2 data-tr>SyncWave Pro satın al</h2>
+  <p class="lead" data-en>One payment, no subscription. Your key arrives by e-mail right after checkout.</p>
+  <p class="lead" data-tr>Tek ödeme, abonelik yok. Anahtarın ödemeden hemen sonra e-postayla gelir.</p>
+  <div class="price">
+    <div class="card">
+      <div data-en>Personal license</div><div data-tr>Kişisel lisans</div>
+      <div class="amt"><span class="pr"></span> <small data-en>one-time</small><small data-tr>tek sefer</small></div>
+      <ul data-en><li>Use on 2 Macs</li><li>All 2.x updates included</li><li>Activate once, then fully offline</li><li>Taxes handled at checkout</li></ul>
+      <ul data-tr><li>2 Mac'te kullanım</li><li>Tüm 2.x güncellemeleri dahil</li><li>Bir kez etkinleştir, sonra tamamen çevrimdışı</li><li>Vergiler ödemede hesaplanır</li></ul>
+      <a class="btn p" id="buyBtn" href="#"><span data-en>Buy now</span><span data-tr>Şimdi al</span></a>
+    </div>
+  </div>
+</div></section>
+
+<section id="faq"><div class="wrap">
+  <h2 data-en>Questions</h2><h2 data-tr>Sorular</h2>
+  <details><summary><span data-en>Does anything get uploaded?</span><span data-tr>Bir şey yükleniyor mu?</span></summary>
+    <p data-en>No. Your music, library, grids and analysis stay on your Mac. The only network call is the one-time license activation.</p>
+    <p data-tr>Hayır. Müziğin, kütüphanen, gridlerin ve analizlerin Mac'inde kalır. Tek ağ bağlantısı bir kerelik lisans etkinleştirmesidir.</p></details>
+  <details><summary><span data-en>Will it change my music files or rekordbox?</span><span data-tr>Müzik dosyalarımı ya da rekordbox'ı değiştirir mi?</span></summary>
+    <p data-en>No. SyncWave Pro never edits or deletes audio files. Exports (playlists, rekordbox XML) are written as new files that you import yourself.</p>
+    <p data-tr>Hayır. SyncWave Pro ses dosyalarını asla düzenlemez ya da silmez. Dışa aktarımlar (playlist, rekordbox XML) senin içe aktardığın yeni dosyalar olarak yazılır.</p></details>
+  <details><summary><span data-en>Do I need rekordbox or Mixed In Key?</span><span data-tr>rekordbox ya da Mixed In Key gerekli mi?</span></summary>
+    <p data-en>No — a plain music folder works. If you have them, SyncWave Pro reads their data to start faster.</p>
+    <p data-tr>Hayır — düz bir müzik klasörü yeter. Varsa, SyncWave Pro daha hızlı başlamak için onların verisini okur.</p></details>
+  <details><summary><span data-en>Windows?</span><span data-tr>Windows?</span></summary>
+    <p data-en>Mac only for now.</p><p data-tr>Şimdilik yalnızca Mac.</p></details>
+  <details><summary><span data-en>Refunds</span><span data-tr>İade</span></summary>
+    <p data-en>Try it for 14 days first. Payments are processed by Lemon Squeezy (merchant of record); refund requests follow the policy shown at checkout.</p>
+    <p data-tr>Önce 14 gün dene. Ödemeleri Lemon Squeezy (satıcı kaydı) işler; iade talepleri ödeme sayfasındaki politikaya tabidir.</p></details>
+  <details id="privacy"><summary>Privacy</summary><p class="legal">SyncWave Pro does not collect analytics, crash reports or usage data. When you activate or deactivate a license key, the app sends the key and an anonymous name for your Mac to Lemon Squeezy to validate it. Purchases are processed by Lemon Squeezy under their own privacy policy. This website uses no cookies and no trackers.</p></details>
+  <details id="eula"><summary>License agreement (EULA)</summary><p class="legal">1. License. A personal, non-exclusive, non-transferable license to use SyncWave Pro on up to two Macs you own or control. The trial allows full use for 14 days on one Mac.
+2. Restrictions. No reselling, renting, sublicensing or redistributing the software or keys; no removing or bypassing the license check. No reverse engineering except where the law expressly allows it.
+3. Your data. The software works offline; your files and analysis stay on your computer. Only license activation contacts the payment provider.
+4. Music rights. You are responsible for having the rights to the audio you use.
+5. Updates and support. 2.x updates included; e-mail support on a best-effort basis.
+6. Refunds. Handled by Lemon Squeezy per the policy shown at checkout.
+7. No warranty. Provided "as is". Keep backups and test your setup before performing live.
+8. Liability. To the extent permitted by law, liability is limited to the price paid.
+9. Termination. The license ends automatically if these terms are broken.</p></details>
+</div></section>
+
+<footer><div class="wrap">© 2026 Kuzutu · SyncWave Pro · <a href="#privacy">Privacy</a> · <a href="#eula">EULA</a><br>rekordbox and Mixed In Key are trademarks of their respective owners; SyncWave Pro is not affiliated with them.</div></footer>
+
+<script>
+document.getElementById('dlArm').href = DL.arm;
+document.getElementById('dlIntel').href = DL.intel;
+document.getElementById('buyBtn').href = CHECKOUT;
+document.querySelectorAll('.pr').forEach(e => e.textContent = PRICE);
+const h = document.documentElement, b = document.getElementById('lang');
+function setLang(l){ h.lang = l; b.textContent = l === 'tr' ? 'EN' : 'TR'; }
+setLang("en");   /* site her zaman İngilizce açılır; TR düğmesi Türkçeye geçirir */
+b.onclick = () => setLang(h.lang === 'tr' ? 'en' : 'tr');
+</script>
+</body>
+</html>
