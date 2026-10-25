@@ -58,7 +58,7 @@ footer{border-top:1px solid var(--line);padding:30px 0;color:var(--mute);font-si
 -->
 <script>
 const CHECKOUT = "https://kuzutu.lemonsqueezy.com/checkout/buy/REPLACE-ME";
-const PRICE = "$49";
+const PRICE = "$19.99";
 const DL = {
   arm: "https://github.com/kuzutu/syncwave-pro/releases/latest/download/SyncWave-Pro-2.3.0-mac-AppleSilicon.zip",
   intel: "https://github.com/kuzutu/syncwave-pro/releases/latest/download/SyncWave-Pro-2.3.0-mac-Intel.zip"
@@ -177,7 +177,7 @@ document.getElementById('buyBtn').href = CHECKOUT;
 document.querySelectorAll('.pr').forEach(e => e.textContent = PRICE);
 const h = document.documentElement, b = document.getElementById('lang');
 function setLang(l){ h.lang = l; b.textContent = l === 'tr' ? 'EN' : 'TR'; }
-setLang(/^tr/i.test(navigator.language) ? 'tr' : 'en');
+setLang("en");   /* site her zaman İngilizce açılır; TR düğmesi Türkçeye geçirir */
 b.onclick = () => setLang(h.lang === 'tr' ? 'en' : 'tr');
 </script>
 </body>
