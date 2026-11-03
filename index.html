@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SyncWave Pro — Free DJ set prep & two-deck player</title>
+<meta name="description" content="SyncWave Pro is a free, fully offline DJ app for macOS and Windows: library cleanup, next-track suggestions, set builder and a two-deck player with sync and Auto DJ.">
+<link rel="icon" href="icon-256.png">
+<style>
+:root{
+  --bg:#121110; --panel:#1b1a18; --panel2:#23211e; --line:#34312c;
+  --ink:#ece7dd; --mute:#a39c90; --amber:#e0a83c; --blue:#3f7fd8; --green:#5cc46a;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:var(--amber)}
+.wrap{max-width:1040px;margin:0 auto;padding:0 20px}
+header.top{display:flex;align-items:center;justify-content:space-between;padding:18px 0}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.12em}
+.brand img{width:30px;height:30px;border-radius:7px}
+.brand b{color:var(--amber);font-weight:600;letter-spacing:.04em}
+.lang{display:flex;gap:6px}
+.lang button{background:transparent;color:var(--mute);border:1px solid var(--line);border-radius:7px;padding:5px 10px;font:600 13px/1 inherit;cursor:pointer}
+.lang button[aria-pressed=true]{color:var(--amber);border-color:var(--amber)}
+.hero{padding:44px 0 28px;text-align:center}
+.hero h1{font-size:clamp(32px,6vw,54px);line-height:1.08;margin:0 0 14px;letter-spacing:-.01em}
+.hero p.sub{color:var(--mute);font-size:clamp(16px,2.2vw,19px);max-width:640px;margin:0 auto 26px}
+.tags{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-bottom:30px}
+.tags > span{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 12px;font-size:13px;color:var(--ink)}
+.tags > span i{font-style:normal;color:var(--green);margin-right:5px}
+.wave{display:block;width:100%;height:110px;border-radius:12px;background:#0c0b0a;border:1px solid var(--line)}
+.primary{display:inline-flex;flex-direction:column;align-items:center;gap:2px;background:var(--amber);color:#1a1307;text-decoration:none;border-radius:12px;padding:14px 30px;font-weight:700;font-size:18px;margin:28px 0 8px;box-shadow:0 6px 24px rgba(224,168,60,.25)}
+.primary small{font-weight:500;font-size:13px;opacity:.8}
+.primary:hover{filter:brightness(1.07)}
+.hint{color:var(--mute);font-size:14px}
+section{padding:46px 0;border-top:1px solid var(--line)}
+section h2{font-size:26px;margin:0 0 6px}
+section p.lead{color:var(--mute);margin:0 0 24px}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(230px,1fr))}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px}
+.card h3{margin:0 0 6px;font-size:17px}
+.card p{margin:0;color:var(--mute);font-size:15px}
+.dl{display:flex;flex-direction:column;gap:12px}
+.dl .card{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.dl .card.rec{border-color:var(--amber)}
+.dl .os{display:flex;flex-direction:column}
+.dl .os b{font-size:17px}
+.dl .os > span{color:var(--mute);font-size:14px}
+.badge{display:none;margin-left:8px;font-size:11px;font-weight:700;color:#1a1307;background:var(--amber);border-radius:5px;padding:2px 6px;vertical-align:2px}
+.rec .badge{display:inline-block}
+.btn{background:var(--panel2);color:var(--ink);border:1px solid var(--line);border-radius:9px;padding:10px 18px;text-decoration:none;font-weight:600;white-space:nowrap}
+.btn:hover{border-color:var(--amber);color:var(--amber)}
+.rec .btn{background:var(--amber);color:#1a1307;border-color:var(--amber)}
+.steps{display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.steps ol{margin:8px 0 0;padding-left:20px;color:var(--mute);font-size:15px}
+.steps li{margin:0 0 8px}
+.steps li b{color:var(--ink)}
+code,pre{font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+pre{background:#0c0b0a;border:1px solid var(--line);border-radius:9px;padding:10px 12px;overflow-x:auto;color:var(--ink);margin:8px 0 0}
+details{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 18px;margin-top:14px}
+details summary{cursor:pointer;font-weight:600}
+.sums{font-size:12px;word-break:break-all;color:var(--mute)}
+footer{border-top:1px solid var(--line);padding:28px 0 40px;color:var(--mute);font-size:13px}
+footer p{margin:0 0 8px}
+[data-l]{display:none}
+html[lang=en] [data-l=en], html[lang=tr] [data-l=tr]{display:revert}
+@media (max-width:560px){ .dl .card{flex-direction:column;align-items:stretch} .btn{text-align:center} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <div class="brand"><img src="icon-256.png" alt="">SYNCWAVE <b>Pro</b></div>
+    <div class="lang" role="group" aria-label="Language">
+      <button type="button" data-set="en" aria-pressed="true">EN</button>
+      <button type="button" data-set="tr" aria-pressed="false">TR</button>
+    </div>
+  </header>
+
+  <div class="hero">
+    <h1>
+      <span data-l="en">Prep your set. Play it on two decks.</span>
+      <span data-l="tr">Setini hazırla. İki deck'te çal.</span>
+    </h1>
+    <p class="sub">
+      <span data-l="en">SyncWave Pro cleans up your library, suggests the next track, builds sets and plays them on two synced decks with Auto DJ. Free, with no account and no internet connection.</span>
+      <span data-l="tr">SyncWave Pro kütüphaneni temizler, sıradaki parçayı önerir, set kurar ve onu senkronlu iki deck'te Auto DJ ile çalar. Ücretsiz; hesap yok, internete bağlanmaz.</span>
+    </p>
+    <div class="tags">
+      <span><i>✓</i><span data-l="en">100% free</span><span data-l="tr">Tamamen ücretsiz</span></span>
+      <span><i>✓</i><span data-l="en">Works offline</span><span data-l="tr">Çevrimdışı çalışır</span></span>
+      <span><i>✓</i>macOS · Windows</span>
+      <span><i>✓</i><span data-l="en">rekordbox XML & Mixed In Key CSV import</span><span data-l="tr">rekordbox XML ve Mixed In Key CSV içe aktarma</span></span>
+    </div>
+    <canvas class="wave" id="wave" aria-hidden="true"></canvas>
+    <a class="primary" id="primary" href="#download">
+      <span id="pLabel">Download</span>
+      <small id="pSub">v2.4.0</small>
+    </a>
+    <div class="hint"><span data-l="en">Version 2.4.0 · </span><span data-l="tr">Sürüm 2.4.0 · </span><a href="#download"><span data-l="en">all downloads</span><span data-l="tr">tüm indirmeler</span></a></div>
+  </div>
+
+  <section>
+    <h2><span data-l="en">What it does</span><span data-l="tr">Neler yapar</span></h2>
+    <p class="lead"><span data-l="en">One app, from a messy music folder to a finished set.</span><span data-l="tr">Dağınık bir müzik klasöründen bitmiş bir sete, tek uygulama.</span></p>
+    <div class="grid">
+      <div class="card"><h3><span data-l="en">Library</span><span data-l="tr">Kütüphane</span></h3><p><span data-l="en">Load a folder, a rekordbox XML or a Mixed In Key CSV. BPM, key, energy and genre for every track, with a mini waveform.</span><span data-l="tr">Bir klasör, rekordbox XML'i ya da Mixed In Key CSV'si yükle. Her parçanın BPM'i, tonu, enerjisi ve türü; yanında mini dalga.</span></p></div>
+      <div class="card"><h3><span data-l="en">Cleanup</span><span data-l="tr">Temizlik</span></h3><p><span data-l="en">Find duplicates, broken files and missing tags before they surprise you in a set.</span><span data-l="tr">Kopyaları, bozuk dosyaları ve eksik etiketleri sette karşına çıkmadan bul.</span></p></div>
+      <div class="card"><h3><span data-l="en">Next track</span><span data-l="tr">Sıradaki parça</span></h3><p><span data-l="en">Suggestions that fit by key (Camelot), tempo and energy.</span><span data-l="tr">Ton (Camelot), tempo ve enerjiye uyan öneriler.</span></p></div>
+      <div class="card"><h3><span data-l="en">Set builder</span><span data-l="tr">Set kurucu</span></h3><p><span data-l="en">Build a set in sections (opening, groove, peak) and see its length and flow.</span><span data-l="tr">Seti bölümlerle kur (açılış, groove, zirve); süresini ve akışını gör.</span></p></div>
+      <div class="card"><h3><span data-l="en">Two decks</span><span data-l="tr">İki deck</span></h3><p><span data-l="en">Beat-locked sync, key lock, hot cues, loops, EQ, filter, effects, sampler and MIDI controllers.</span><span data-l="tr">Vuruşa kilitli senkron, ton kilidi, hot cue, loop, EQ, filtre, efektler, sampler ve MIDI kontrolcü.</span></p></div>
+      <div class="card"><h3>Auto DJ</h3><p><span data-l="en">Plays your set in order and mixes each track into the next on the beat.</span><span data-l="tr">Setini sırayla çalar, her parçayı bir sonrakine vuruşunda mikser.</span></p></div>
+    </div>
+  </section>
+
+  <section id="download">
+    <h2><span data-l="en">Download</span><span data-l="tr">İndir</span></h2>
+    <p class="lead"><span data-l="en">Version 2.4.0. Pick the file for your computer.</span><span data-l="tr">Sürüm 2.4.0. Bilgisayarına uygun dosyayı seç.</span></p>
+    <div class="dl">
+      <div class="card" data-os="mac-arm">
+        <div class="os"><b>macOS · Apple Silicon<span class="badge"><span data-l="en">For you</span><span data-l="tr">Senin için</span></span></b><span><span data-l="en">M1, M2, M3, M4 Macs · macOS 12 or later · 140 MB</span><span data-l="tr">M1, M2, M3, M4 Mac'ler · macOS 12 ve sonrası · 140 MB</span></span></div>
+        <a class="btn" data-file="SyncWave-Pro-2.4.0-mac-AppleSilicon.zip"><span data-l="en">Download .zip</span><span data-l="tr">.zip indir</span></a>
+      </div>
+      <div class="card" data-os="mac-intel">
+        <div class="os"><b>macOS · Intel<span class="badge"><span data-l="en">For you</span><span data-l="tr">Senin için</span></span></b><span><span data-l="en">Older Intel Macs · macOS 12 or later · 147 MB</span><span data-l="tr">Eski Intel Mac'ler · macOS 12 ve sonrası · 147 MB</span></span></div>
+        <a class="btn" data-file="SyncWave-Pro-2.4.0-mac-Intel.zip"><span data-l="en">Download .zip</span><span data-l="tr">.zip indir</span></a>
+      </div>
+      <div class="card" data-os="win">
+        <div class="os"><b>Windows · <span data-l="en">Installer</span><span data-l="tr">Kurulum</span><span class="badge"><span data-l="en">For you</span><span data-l="tr">Senin için</span></span></b><span><span data-l="en">Windows 10 / 11, 64-bit · no admin rights needed · 122 MB</span><span data-l="tr">Windows 10 / 11, 64 bit · yönetici izni gerekmez · 122 MB</span></span></div>
+        <a class="btn" data-file="SyncWave-Pro-2.4.0-Windows-Setup.exe"><span data-l="en">Download .exe</span><span data-l="tr">.exe indir</span></a>
+      </div>
+      <div class="card" data-os="win-portable">
+        <div class="os"><b>Windows · <span data-l="en">Portable</span><span data-l="tr">Taşınabilir</span></b><span><span data-l="en">No installation: unzip anywhere and run · 162 MB</span><span data-l="tr">Kurulum yok: istediğin yere aç, çalıştır · 162 MB</span></span></div>
+        <a class="btn" data-file="SyncWave-Pro-2.4.0-Windows-Portable.zip"><span data-l="en">Download .zip</span><span data-l="tr">.zip indir</span></a>
+      </div>
+    </div>
+    <p class="hint" style="margin-top:14px">
+      <span data-l="en">Not sure which Mac you have? Apple menu &gt; About This Mac shows the chip.</span>
+      <span data-l="tr">Mac'in hangisi? Apple menüsü &gt; Bu Mac Hakkında işlemciyi gösterir.</span>
+      · <a id="relLink" href="#"><span data-l="en">All releases on GitHub</span><span data-l="tr">GitHub'daki tüm sürümler</span></a>
+    </p>
+  </section>
+
+  <section id="install">
+    <h2><span data-l="en">Installing</span><span data-l="tr">Kurulum</span></h2>
+    <p class="lead"><span data-l="en">The app isn't signed by Apple or Microsoft, so the first launch takes one extra click.</span><span data-l="tr">Uygulama Apple ya da Microsoft tarafından imzalı değil; bu yüzden ilk açılışta bir tık fazlası gerekir.</span></p>
+    <div class="steps">
+      <div class="card"><h3>macOS</h3>
+        <ol data-l="en">
+          <li>Unzip the download and drag <b>SyncWave Pro.app</b> into <b>Applications</b>.</li>
+          <li>Double-click it. If macOS says it "cannot verify" the app:<br>
+            <b>macOS 15 and later:</b> click Done, open System Settings &gt; Privacy &amp; Security, scroll down, click <b>Open Anyway</b> and confirm.<br>
+            <b>macOS 12–14:</b> right-click the app, choose <b>Open</b>, then <b>Open</b> again.</li>
+          <li>You only do this once.</li>
+        </ol>
+        <ol data-l="tr">
+          <li>Zip'i açın ve <b>SyncWave Pro.app</b>'i <b>Uygulamalar</b> klasörüne sürükleyin.</li>
+          <li>Çift tıklayın. macOS uygulamayı "doğrulayamadığını" söylerse:<br>
+            <b>macOS 15 ve sonrası:</b> Bitti'ye basın, Sistem Ayarları &gt; Gizlilik ve Güvenlik'i açın, aşağı kaydırıp <b>Yine de Aç</b>'a basın ve onaylayın.<br>
+            <b>macOS 12–14:</b> uygulamaya sağ tıklayın, <b>Aç</b>'ı seçin, sonra tekrar <b>Aç</b>'a basın.</li>
+          <li>Bunu yalnızca bir kez yaparsınız.</li>
+        </ol>
+        <details><summary><span data-l="en">Still blocked?</span><span data-l="tr">Hâlâ açılmıyor mu?</span></summary>
+          <p class="hint" style="margin:8px 0 0"><span data-l="en">Run this in Terminal:</span><span data-l="tr">Terminal'de şunu çalıştırın:</span></p>
+          <pre>xattr -dr com.apple.quarantine "/Applications/SyncWave Pro.app"</pre>
+        </details>
+      </div>
+      <div class="card"><h3>Windows</h3>
+        <ol data-l="en">
+          <li>Run <b>SyncWave-Pro-2.4.0-Windows-Setup.exe</b>. No administrator rights are needed.</li>
+          <li>If SmartScreen says "Windows protected your PC", click <b>More info</b>, then <b>Run anyway</b>.</li>
+          <li>Follow the installer. You get Start menu and desktop shortcuts.</li>
+          <li>Uninstall: Settings &gt; Apps &gt; SyncWave Pro &gt; Uninstall.</li>
+        </ol>
+        <ol data-l="tr">
+          <li><b>SyncWave-Pro-2.4.0-Windows-Setup.exe</b> dosyasını çalıştırın. Yönetici izni gerekmez.</li>
+          <li>SmartScreen "Windows bilgisayarınızı korudu" derse <b>Ek bilgi</b>'ye, sonra <b>Yine de çalıştır</b>'a basın.</li>
+          <li>Kurulumu tamamlayın. Başlat menüsüne ve masaüstüne kısayol eklenir.</li>
+          <li>Kaldırma: Ayarlar &gt; Uygulamalar &gt; SyncWave Pro &gt; Kaldır.</li>
+        </ol>
+      </div>
+    </div>
+    <div class="grid" style="margin-top:14px">
+      <div class="card"><h3><span data-l="en">Updating from 2.3</span><span data-l="tr">2.3'ten güncelleme</span></h3><p><span data-l="en">Just replace the app or run the new installer. Your library and analysis stay.</span><span data-l="tr">Uygulamayı değiştirin ya da yeni kurulumu çalıştırın. Kütüphane ve analizler korunur.</span></p></div>
+      <div class="card"><h3><span data-l="en">Privacy</span><span data-l="tr">Gizlilik</span></h3><p><span data-l="en">SyncWave Pro never connects to the internet. Your music, library and analysis never leave your computer.</span><span data-l="tr">SyncWave Pro internete hiç bağlanmaz. Müziklerin, kütüphanen ve analizlerin bilgisayarından çıkmaz.</span></p></div>
+    </div>
+    <details><summary><span data-l="en">SHA-256 checksums</span><span data-l="tr">SHA-256 sağlama değerleri</span></summary>
+      <pre class="sums" id="sums">8ce3cf23ce7be1147f1fbdfef049424c5c2c152fed70f2075b6f4c82e110d2f7  SyncWave-Pro-2.4.0-Windows-Portable.zip
+d1bfee397af706fc788a0d9e4c9606ba21ff38b4304a34da39ca869335bd1d6c  SyncWave-Pro-2.4.0-mac-AppleSilicon.zip
+732aaf3b8f0ee70aef33e5ab7123ce862ced383a21d30bd4237a65e5856c0268  SyncWave-Pro-2.4.0-mac-Intel.zip
+a46d3e4fbd51ec6e417b6f584155cdb3a3aa69b4e64fc3c8c30f42ae0a0c4f0e  SyncWave-Pro-2.4.0-Windows-Setup.exe</pre>
+    </details>
+  </section>
+
+  <footer>
+    <p><span data-l="en">SyncWave Pro is free to use on any number of computers. You may share the unmodified installer free of charge, but not sell it.</span><span data-l="tr">SyncWave Pro istediğin kadar bilgisayarda ücretsiz kullanılabilir. Değiştirilmemiş kurulum dosyasını ücretsiz paylaşabilirsin, satamazsın.</span> <a href="LICENSE.txt"><span data-l="en">Full license</span><span data-l="tr">Kullanım koşulları</span></a></p>
+    <p><span data-l="en">Provided "as is", without warranty. Test your setup before a live performance.</span><span data-l="tr">"Olduğu gibi" sunulur, garanti verilmez. Canlı performanstan önce kurulumunu test et.</span></p>
+    <p><span data-l="en">rekordbox and Mixed In Key are trademarks of their respective owners. SyncWave Pro is not affiliated with them; the names only describe file compatibility.</span><span data-l="tr">rekordbox ve Mixed In Key ilgili sahiplerinin markalarıdır. SyncWave Pro bu markalarla bağlantılı değildir; adlar yalnızca dosya uyumluluğunu anlatır.</span></p>
+  </footer>
+</div>
+
+<script>
+(function(){
+  var REPO = 'kuzutu/syncwave-pro', TAG = 'v2.4.0';
+  var base = 'https://github.com/' + REPO + '/releases/download/' + TAG + '/';
+  document.getElementById('relLink').href = 'https://github.com/' + REPO + '/releases';
+  document.querySelectorAll('a[data-file]').forEach(function(a){ a.href = base + a.dataset.file; });
+
+  /* dil: ?lang=, kayıtlı seçim, sonra tarayıcı dili */
+  var L = {
+    en:{dl:'Download for ', other:'Download', mac:'macOS', macI:'macOS (Intel)', win:'Windows', size:'Free · v2.4.0 · '},
+    tr:{dl:'İndir: ', other:'İndir', mac:'macOS', macI:'macOS (Intel)', win:'Windows', size:'Ücretsiz · v2.4.0 · '}
+  };
+  var saved = null; try { saved = localStorage.getItem('sw_site_lang'); } catch(e){}
+  var q = /[?&]lang=(en|tr)/.exec(location.search);
+  var lang = q ? q[1] : saved || ((navigator.language || '').toLowerCase().indexOf('tr') === 0 ? 'tr' : 'en');
+
+  /* işletim sistemi tahmini */
+  var ua = navigator.userAgent, os = null;
+  if(/Windows/i.test(ua)) os = 'win';
+  else if(/Macintosh|Mac OS X/i.test(ua) && !/iPhone|iPad/i.test(ua)){
+    os = 'mac-arm';
+    try {   /* Intel Mac'te WebGL çoğunlukla Intel/AMD GPU adı verir */
+      var gl = document.createElement('canvas').getContext('webgl');
+      var ext = gl && gl.getExtension('WEBGL_debug_renderer_info');
+      var r = ext ? String(gl.getParameter(ext.UNMASKED_RENDERER_WEBGL)) : '';
+      if(/Intel|AMD|Radeon|NVIDIA/i.test(r) && !/Apple/i.test(r)) os = 'mac-intel';
+    } catch(e){}
+  }
+  if(os){ var rc = document.querySelector('[data-os="' + os + '"]'); if(rc) rc.classList.add('rec'); }
+
+  function apply(l){
+    lang = l; document.documentElement.lang = l;
+    document.querySelectorAll('.lang button').forEach(function(b){ b.setAttribute('aria-pressed', String(b.dataset.set === l)); });
+    var t = L[l], p = document.getElementById('primary');
+    var file = os === 'win' ? 'SyncWave-Pro-2.4.0-Windows-Setup.exe' : os === 'mac-intel' ? 'SyncWave-Pro-2.4.0-mac-Intel.zip' : os === 'mac-arm' ? 'SyncWave-Pro-2.4.0-mac-AppleSilicon.zip' : null;
+    var name = os === 'win' ? t.win : os === 'mac-intel' ? t.macI : t.mac;
+    var size = os === 'win' ? '122 MB' : os === 'mac-intel' ? '147 MB' : '140 MB';
+    if(file){ p.href = base + file; document.getElementById('pLabel').textContent = t.dl + name; document.getElementById('pSub').textContent = t.size + size; }
+    else { p.href = '#download'; document.getElementById('pLabel').textContent = t.other; document.getElementById('pSub').textContent = 'macOS · Windows'; }
+  }
+  document.querySelectorAll('.lang button').forEach(function(b){
+    b.addEventListener('click', function(){ apply(b.dataset.set); try { localStorage.setItem('sw_site_lang', b.dataset.set); } catch(e){} });
+  });
+  apply(lang);
+
+  /* süs: uygulamanın dalga diliyle (dışta amber, içte mavi bas) yavaş kayan bir dalga */
+  var cv = document.getElementById('wave'), g = cv.getContext('2d');
+  var still = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function amp(i){
+    var beat = i % 32, kick = Math.exp(-beat/5);
+    var n = Math.sin(i*12.9898)*43758.5453; n -= Math.floor(n);
+    var phrase = 0.55 + 0.45*Math.sin(i/260);
+    return {hi: Math.min(1, (0.25 + 0.75*kick)*phrase + n*0.18), lo: kick*phrase*0.85};
+  }
+  function draw(t){
+    var dpr = window.devicePixelRatio || 1, w = cv.clientWidth, h = cv.clientHeight;
+    if(cv.width !== Math.round(w*dpr) || cv.height !== Math.round(h*dpr)){ cv.width = Math.round(w*dpr); cv.height = Math.round(h*dpr); }
+    var W = cv.width, H = cv.height, mid = H/2, off = Math.floor((t || 0)/16);   /* tam piksel adımı: netlik */
+    g.clearRect(0, 0, W, H);
+    for(var x = 0; x < W; x++){
+      var a = amp(x + off), yh = Math.max(1, a.hi*(mid - 8*dpr)), yl = yh*Math.min(1, a.lo + 0.15);
+      g.fillStyle = x < W/2 ? 'rgba(224,168,60,.45)' : '#e0a83c'; g.fillRect(x, mid - yh, 1, yh*2);
+      g.fillStyle = x < W/2 ? 'rgba(63,127,216,.5)' : '#3f7fd8'; g.fillRect(x, mid - yl, 1, yl*2);
+    }
+    for(var b = 0; b < W + 32; b += 32*dpr){ var bx = b - (off % (32*dpr)); g.fillStyle = 'rgba(255,255,255,.12)'; g.fillRect(bx, 6*dpr, 1, H - 12*dpr); }
+    g.fillStyle = '#ff2b2b'; g.fillRect(Math.round(W/2) - dpr, 0, 2*dpr, H);
+    if(!still) requestAnimationFrame(draw);
+  }
+  draw(0); window.addEventListener('resize', function(){ if(still) draw(0); });
+})();
+</script>
+</body>
+</html>

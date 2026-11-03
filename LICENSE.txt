@@ -1,0 +1,44 @@
+SyncWave Pro — Free License / Ücretsiz Kullanım Koşulları
+Version 2.4 — November 2026
+
+SyncWave Pro ("the Software") is free. No purchase, license key or trial period.
+
+1. Use. You may install and use the Software on any number of computers, for
+   personal or professional DJ work, at no cost.
+
+2. Sharing. You may share the unmodified installer free of charge. You may not
+   sell the Software or bundle it with something you sell.
+
+3. Your data. The Software works fully offline and makes no network requests.
+   Your music files, library, analysis results, cue points and grids stay on
+   your computer. No usage data is collected.
+
+4. Music rights. You are responsible for having the rights to the audio you
+   load, play, export or perform with the Software.
+
+5. No warranty. The Software is provided "as is", without warranty of any kind.
+   Always keep backups of your music library and DJ software data, and test
+   your setup before a live performance.
+
+6. Limitation of liability. To the maximum extent permitted by law, the author
+   is not liable for any damages, including loss of data or income, arising
+   from the use of the Software.
+
+7. Third-party components. The audio genre model (Discogs-EffNet, Essentia
+   models by MTG-UPF) is licensed under CC BY-NC-SA 4.0 and is used here for
+   non-commercial purposes only. onnxruntime-web (Microsoft) is MIT licensed.
+
+8. Trademarks. Product, event, club and label names that may appear in the
+   Software or its documentation (for example "rekordbox") are trademarks of
+   their respective owners. They are used only to describe compatibility or a
+   musical style. SyncWave Pro is not affiliated with, sponsored or endorsed
+   by any of them.
+
+---
+
+Türkçe özet: SyncWave Pro ücretsizdir; lisans anahtarı veya deneme süresi
+yoktur. İstediğiniz kadar bilgisayarda kullanabilir, değiştirmeden ücretsiz
+paylaşabilirsiniz; satamazsınız. Program internete bağlanmaz. Program
+"olduğu gibi" sunulur; canlı performanstan önce kurulumunuzu test edin.
+Geçen marka adları yalnızca uyumluluk ya da müzik tarzını anlatmak içindir;
+SyncWave Pro bu markalarla bağlantılı değildir.
